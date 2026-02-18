@@ -28,3 +28,34 @@ body {
     margin: 0 auto;
 }
 
+header {
+  padding: 20px 0;
+  border-bottom: 1px solid #1e293b;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--secondary-text);
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
