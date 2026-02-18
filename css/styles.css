@@ -59,3 +59,17 @@ nav a:hover {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+#hero {
+    padding: 120px 0;
+}
+
+#hero h1 {
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    color: var(--secondary-text);
+    margin-bottom: 30px;
+}
