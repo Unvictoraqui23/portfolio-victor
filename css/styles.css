@@ -1,4 +1,6 @@
-/* ==== RESET BASE ==== */
+/* =========================
+   RESET
+========================= */
 *,
 *::before,
 *::after {
@@ -7,10 +9,12 @@
     box-sizing: border-box;
 }
 
-/* ==== VARIABLES ==== */
+/* =========================
+   VARIABLES
+========================= */
 :root {
     --bg-dark: #0f172a;
-    --bg-light: #f8fafc;        /* gris marfil elegante */
+    --bg-light: #f8fafc;
     --text-dark: #0f172a;
     --text-light: #f1f5f9;
     --accent-color: #38bdf8;
@@ -20,7 +24,9 @@
     --max-width: 1100px;
 }
 
-/* ==== BASE GLOBAL ==== */
+/* =========================
+   BASE GLOBAL
+========================= */
 body {
     font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
@@ -35,10 +41,13 @@ body {
     margin: 0 auto;
 }
 
-/* ==== HEADER ==== */
+/* =========================
+   HEADER
+========================= */
 header {
+    background-color: var(--bg-light);
     padding: 20px 0;
-    border-bottom: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-light);
 }
 
 header .container {
@@ -51,9 +60,12 @@ header .container {
     font-weight: bold;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    color: var(--text-dark);
 }
 
-/* ==== NAVIGATION ==== */
+/* =========================
+   NAVIGATION
+========================= */
 nav ul {
     display: flex;
     list-style: none;
@@ -62,7 +74,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #e2e8f0; /* gris claro elegante */
+    color: #334155;
     font-weight: 500;
     position: relative;
     transition: color 0.3s ease;
@@ -87,48 +99,106 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* ==== HERO SECTION ==== */
+/* =========================
+   HERO
+========================= */
 #hero {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+    background-size: 50px 50px;
 }
 
-#hero .container {
-    display: flex;
-    flex-direction: column;
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(56, 189, 248, 0.08),
+        transparent 60%
+    );
+    animation: glowPulse 8s ease-in-out infinite;
+    pointer-events: none;
 }
 
-#hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
+@keyframes glowPulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.4; }
+}
+
+.hero-content {
     max-width: 700px;
+    z-index: 2;
 }
 
-#hero p {
-    color: var(--secondary-text);
-    margin-bottom: 30px;
-    max-width: 600px;
-}
-
-/* ==== CTA BUTTON ==== */
-.btn-primary {
+.hero-label {
     display: inline-block;
-    padding: 12px 28px;
-    border: 1px solid var(--accent-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-primary,
+.btn-secondary {
+    padding: 14px 32px;
     border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
+.btn-primary {
     background-color: var(--accent-color);
     color: var(--bg-dark);
 }
 
-/* ==== SECTIONS CLARAS ==== */
+.btn-secondary {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+}
+
+/* =========================
+   SECTIONS CLARAS
+========================= */
 section {
     padding: 100px 0;
 }
@@ -139,4 +209,19 @@ section {
     background-color: var(--bg-light);
     color: var(--text-dark);
     border-top: 1px solid var(--border-light);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--secondary-text);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-dark);
+}
+
+footer p {
+    font-size: 0.9rem;
 }
