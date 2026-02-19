@@ -1,6 +1,6 @@
-/* =========================
-   RESET
-========================= */
+/* ==================================================
+   1. RESET
+================================================== */
 *,
 *::before,
 *::after {
@@ -9,9 +9,9 @@
     box-sizing: border-box;
 }
 
-/* =========================
-   VARIABLES
-========================= */
+/* ==================================================
+   2. VARIABLES
+================================================== */
 :root {
     --bg-dark: #0f172a;
     --bg-light: #f8fafc;
@@ -24,9 +24,13 @@
     --max-width: 1100px;
 }
 
-/* =========================
-   BASE GLOBAL
-========================= */
+/* ==================================================
+   3. BASE GLOBAL
+================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
@@ -41,9 +45,9 @@ body {
     margin: 0 auto;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ==================================================
+   4. LAYOUT - HEADER
+================================================== */
 header {
     background-color: var(--bg-light);
     padding: 20px 0;
@@ -63,9 +67,9 @@ header .container {
     color: var(--text-dark);
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* ==================================================
+   5. COMPONENTES - NAVIGATION
+================================================== */
 nav ul {
     display: flex;
     list-style: none;
@@ -99,15 +103,16 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* =========================
-   HERO
-========================= */
+/* ==================================================
+   6. SECCIÓN HERO
+================================================== */
 #hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding: 0 2rem;
     background-color: var(--bg-dark);
 
     background-image:
@@ -116,6 +121,7 @@ nav a:hover::after {
 
     background-size: 50px 50px;
 }
+
 
 #hero::before {
     content: "";
@@ -130,15 +136,10 @@ nav a:hover::after {
     pointer-events: none;
 }
 
-@keyframes glowPulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 0.7; }
-    100% { opacity: 0.4; }
-}
-
 .hero-content {
     max-width: 700px;
     z-index: 2;
+    text-align: left;
 }
 
 .hero-label {
@@ -168,9 +169,9 @@ nav a:hover::after {
     flex-wrap: wrap;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* ==================================================
+   7. COMPONENTE - BUTTONS
+================================================== */
 .btn-primary,
 .btn-secondary {
     padding: 14px 32px;
@@ -180,11 +181,35 @@ nav a:hover::after {
     transition: all 0.3s ease;
 }
 
+/* Botón principal */
 .btn-primary {
+    position: relative;
+    overflow: hidden;
     background-color: var(--accent-color);
     color: var(--bg-dark);
 }
 
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+/* Botón secundario */
 .btn-secondary {
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
@@ -196,9 +221,9 @@ nav a:hover::after {
     box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
 }
 
-/* =========================
-   SECTIONS CLARAS
-========================= */
+/* ==================================================
+   8. SECCIONES CLARAS
+================================================== */
 section {
     padding: 100px 0;
 }
@@ -211,9 +236,9 @@ section {
     border-top: 1px solid var(--border-light);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ==================================================
+   9. FOOTER
+================================================== */
 footer {
     background-color: var(--bg-dark);
     color: var(--secondary-text);
@@ -224,4 +249,30 @@ footer {
 
 footer p {
     font-size: 0.9rem;
+}
+
+/* ==================================================
+   10. ANIMACIONES
+================================================== */
+@keyframes glowPulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.4; }
+}
+
+/* ==================================================
+RESPONSIVE - HEADER 
+=================================================== */
+@media (max-width: 768px) {
+    
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+       gap: 20px;
+       flex-wrap: wrap;
+       justify-content: center; 
+    }
 }
