@@ -86,7 +86,9 @@ nav a:hover::after {
 
 /* ==== HERO SECTION ==== */
 #hero {
-    padding: 120px 0;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
 }
 
 #hero h1 {
@@ -98,4 +100,8 @@ nav a:hover::after {
     color: var(--secondary-text);
     margin-bottom: 30px;
     max-width: 600px;
+}
+
+section:not(#hero) {
+    border-top: 1px solid var(--border-color);
 }
