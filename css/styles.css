@@ -109,3 +109,15 @@ section {
 section:not(#hero) {
     border-top: 1px solid var(--border-color);
 }
+
+/* ==== BUTTON CTA ==== */
+.btn-primary {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
