@@ -1,30 +1,49 @@
-// Improved JavaScript with null checks, proper aria-expanded initialization, ESC key support, and click-outside menu closure
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-// Menu initialization
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
+// Crear overlay dinámicamente
+const overlay = document.createElement("div");
+overlay.classList.add("menu-overlay");
+document.body.appendChild(overlay);
 
-if (menuToggle && menu) {
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.addEventListener('click', () => {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        menu.style.display = isExpanded ? 'none' : 'block';
-    });
+if (menuToggle && navLinks) {
 
-    // ESC key support
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menu.style.display === 'block') {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menu.style.display = 'none';
-        }
-    });
+  menuToggle.setAttribute("aria-expanded", "false");
 
-    // Click outside menu closure
-    document.addEventListener('click', (event) => {
-        if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.style.display === 'block') {
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menu.style.display = 'none';
-        }
-    });
+  const openMenu = () => {
+    navLinks.classList.add("active");
+    menuToggle.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("no-scroll");
+    menuToggle.setAttribute("aria-expanded", "true");
+  };
+
+  const closeMenu = () => {
+    navLinks.classList.remove("active");
+    menuToggle.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.contains("active");
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // Cerrar al hacer click en overlay
+  overlay.addEventListener("click", closeMenu);
+
+  // Cerrar al hacer click en un link
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // ESC key
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navLinks.classList.contains("active")) {
+      closeMenu();
+    }
+  });
+
 }
