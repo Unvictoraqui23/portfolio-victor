@@ -1,278 +1,265 @@
-/* ==================================================
-   1. RESET
-================================================== */
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ==================================================
-   2. VARIABLES
-================================================== */
+/* ===== VARIABLES ===== */
 :root {
-    --bg-dark: #0f172a;
-    --bg-light: #f8fafc;
-    --text-dark: #0f172a;
-    --text-light: #f1f5f9;
-    --accent-color: #38bdf8;
-    --secondary-text: #94a3b8;
-    --border-dark: #1e293b;
-    --border-light: #e2e8f0;
-    --max-width: 1100px;
+  --bg-dark: #0f172a;
+  --bg-glass: rgba(30, 41, 59, 0.75);
+  --text-light: #f1f5f9;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
 }
 
-/* ==================================================
-   3. BASE GLOBAL
-================================================== */
-html {
-    scroll-behavior: smooth;
-}
-
+/* ===== BODY ===== */
 body {
-    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
 }
 
-.container {
-    width: 90%;
-    max-width: var(--max-width);
-    margin: 0 auto;
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: var(--bg-glass);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 100;
 }
 
-/* ==================================================
-   4. LAYOUT - HEADER
-================================================== */
-header {
-    background-color: var(--bg-light);
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-light);
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--accent);
 }
 
-/* ==================================================
-   5. COMPONENTES - NAVIGATION
-================================================== */
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #334155;
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease;
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  transition: 0.3s ease;
+  display: inline-block;
 }
 
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 2px;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
+.nav-links a:hover {
+  animation: microBounce 0.4s ease forwards;
+  color: var(--accent);
 }
 
-nav a:hover {
-    color: var(--accent-color);
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  padding-top: 120px;
+  position: relative;
+  overflow: hidden;
 }
 
-nav a:hover::after {
-    width: 100%;
+/* Glow animado de fondo */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.25;
+  animation: glowMove 8s ease-in-out infinite alternate;
 }
 
-/* ==================================================
-   6. SECCIÓN HERO
-================================================== */
-#hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 0 2rem;
-    background-color: var(--bg-dark);
-
-    background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-
-    background-size: 50px 50px;
+@keyframes glowMove {
+  0% { transform: translate(-100px, -60px); }
+  100% { transform: translate(100px, 60px); }
 }
 
-
-#hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at 20% 30%,
-        rgba(56, 189, 248, 0.08),
-        transparent 60%
-    );
-    animation: glowPulse 8s ease-in-out infinite;
-    pointer-events: none;
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
 }
 
-.hero-content {
-    max-width: 700px;
-    z-index: 2;
-    text-align: left;
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: fadeUp 1s ease forwards;
 }
 
-.hero-label {
-    display: inline-block;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent-color);
-    margin-bottom: 20px;
+.accent {
+  color: var(--accent);
 }
 
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    line-height: 1.2;
-    margin-bottom: 25px;
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  animation: fadeUp 1.5s ease forwards;
 }
 
-.hero-content p {
-    font-size: 1.1rem;
-    color: var(--secondary-text);
-    margin-bottom: 40px;
+/* ===== BOTÓN HERO BLANCO ===== */
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+.btn:hover {
+  animation: microBounce 0.4s ease forwards;
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(56, 189, 248, 0.35);
 }
 
-/* ==================================================
-   7. COMPONENTE - BUTTONS
-================================================== */
-.btn-primary,
-.btn-secondary {
-    padding: 14px 32px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+/* Sweep interno brillante */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: 0.6s;
 }
 
-/* Botón principal */
-.btn-primary {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--accent-color);
-    color: var(--bg-dark);
+.btn:hover::before {
+  transform: translateX(100%);
 }
 
-.btn-primary::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.4),
-        transparent
-    );
-    transition: left 0.6s ease;
+/* Glow externo */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+  z-index: -1;
 }
 
-.btn-primary:hover::after {
-    left: 100%;
+.btn:hover::after {
+  opacity: 1;
 }
 
-/* Botón secundario */
-.btn-secondary {
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
+/* ===== SECCIONES ===== */
+.section {
+  padding: 120px 20px;
+  text-align: center;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+/* ===== FOOTER ===== */
+
+.footer {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ==================================================
-   8. SECCIONES CLARAS
-================================================== */
-section {
-    padding: 100px 0;
+.footer-container p {
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
-#sobre-mi,
-#proyectos,
-#contacto {
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    border-top: 1px solid var(--border-light);
+/* ===== SOCIAL ICONS ===== */
+
+.social-icons {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
 }
 
-/* ==================================================
-   9. FOOTER
-================================================== */
-footer {
-    background-color: var(--bg-dark);
-    color: var(--secondary-text);
-    padding: 40px 0;
-    text-align: center;
-    border-top: 1px solid var(--border-dark);
+.social-icons a {
+  color: var(--text-light);
+  font-size: 1.4rem;
+  transition: 0.3s ease;
+  position: relative;
+  display: inline-block;
 }
 
-footer p {
-    font-size: 0.9rem;
+.social-icons a:hover {
+  animation: microBounce 0.4s ease forwards;
+  color: var(--accent);
 }
 
-/* ==================================================
-   10. ANIMACIONES
-================================================== */
-@keyframes glowPulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 0.7; }
-    100% { opacity: 0.4; }
+/* Glow sutil en iconos */
+.social-icons a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(15px);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: -1;
 }
 
-/* ==================================================
-RESPONSIVE - HEADER 
-=================================================== */
-@media (max-width: 768px) {
-    
-    header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
+.social-icons a:hover::after {
+  opacity: 0.4;
+}
 
-    nav ul {
-       gap: 20px;
-       flex-wrap: wrap;
-       justify-content: center; 
-    }
+/* ===== ANIMACIONES ===== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Micro Bounce */
+@keyframes microBounce {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-6px); }
+  70%  { transform: translateY(-3px); }
+  100% { transform: translateY(-4px); }
 }
