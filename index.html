@@ -3,57 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Victor.Dev | Frontend Developer</title>
+  <title>Victor | Frontend Development</title>
 
-  <!-- Fuente tech -->
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+/>
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">Victor.dev</div>
-      <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container nav-container">
+      
+      <div class="logo">Victor.Dev</div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-container">
-      <h1 class="hero-title">
-        Victor.Dev <span class="accent">Frontend developent</span>
-      </h1>
-      <p class="hero-subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing.
-      </p>
-      <a href="#proyectos" class="btn">Ver proyectos</a>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
   </header>
 
-  <section id="proyectos" class="section">
-    <h2>Proyectos</h2>
-    <p>Próximamente...</p>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      
+      <h1 class="hero-title">
+        Victor<span class="accent">.Dev</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Desarrollo Frontend creando experiencias web modernas, minimalistas y enfocadas en resultados.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <a href="#contacto" class="btn btn-secondary">Contactarme</a>
+      </div>
+
+    </div>
   </section>
 
-</body>
+  <!-- ===== PROYECTOS ===== -->
+  <section class="section" id="proyectos">
+    <div class="container">
+      <h2>Proyectos próximamente 🚀</h2>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-container">
+    <p>© 2026 Victor.Dev — Frontend Development</p>
+
     <div class="social-icons">
-      <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/TUUSUARIO" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+
+      <a href="https://linkedin.com/in/TUUSUARIO" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
     </div>
-    <p>© 2026 Victor.dev — Todos los derechos reservados.</p>
   </div>
 </footer>
-<script src="js/main.js"></script>
+
+  <script src="script.js"></script>
+</body>
 </html>
