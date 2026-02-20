@@ -8,7 +8,11 @@
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+  />
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -18,9 +22,10 @@
   <header class="header">
     <div class="container nav-container">
       
-      <div class="logo">Victor.Dev</div>
+      <!-- Logo como enlace semántico -->
+      <a href="#inicio" class="logo">Victor.Dev</a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Navegación principal">
         <ul class="nav-links">
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
@@ -28,7 +33,13 @@
         </ul>
       </nav>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <!-- Botón hamburguesa con aria-expanded correcto -->
+      <button 
+        class="menu-toggle" 
+        id="menu-toggle" 
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="nav">
         <span></span>
         <span></span>
         <span></span>
@@ -64,22 +75,38 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-container">
-    <p>© 2026 Victor.Dev — Frontend Development</p>
-
-    <div class="social-icons">
-      <a href="https://github.com/TUUSUARIO" target="_blank" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-
-      <a href="https://linkedin.com/in/TUUSUARIO" target="_blank" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+  <!-- ===== CONTACTO ===== -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <h2>Ponte en contacto</h2>
+      <p>Estoy disponible para nuevos proyectos y colaboraciones</p>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>© 2026 Victor.Dev — Frontend Development</p>
+
+      <div class="social-icons">
+        <a 
+          href="https://github.com/Unvictoraqui23" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a 
+          href="https://linkedin.com/in/victor-dev" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>
