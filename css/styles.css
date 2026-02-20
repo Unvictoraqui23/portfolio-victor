@@ -75,7 +75,7 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 20px;
-  padding-top: 120px;
+   padding-top: 80px; /* altura real del navbar */
   position: relative;
   overflow: hidden;
 }
@@ -105,9 +105,9 @@ body {
 }
 
 .hero-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  animation: fadeUp 1s ease forwards;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
 }
 
 .accent {
