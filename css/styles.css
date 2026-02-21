@@ -171,6 +171,11 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image: 
+  linear-gradient(rgba(255, 0, 128, 0.06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
 }
 
 .hero::before {
@@ -247,13 +252,13 @@ body {
 }
 
 .btn-primary {
-  background: white;
+  background: #38bdf8;
   color: var(--bg-dark);
 }
 
 .btn-secondary {
   border: 2px solid white;
-  color: white;
+  color: #38bdf8;
 }
 
 /* ===== SECCIONES ===== */
@@ -464,7 +469,7 @@ body {
   }
 
   .social-icons {
-    gap: 1.5rem;
+    gap: .5rem;
   }
 
   .social-icons a {
@@ -489,3 +494,12 @@ body {
     transform: translateX(0);
   }
 }
+
+@keyframes gridMove {
+  from { 
+    background-position: 0 0; 
+  }
+  to   {
+     background-position: 60px 60px; 
+    }
+} 
